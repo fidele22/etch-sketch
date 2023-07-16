@@ -44,3 +44,25 @@ resetButton.addEventListener("click", function() {
 });
 
 createGrid();
+
+function askGridSize() {
+  const gridSize = prompt('Enter the number of squares per side (maximum 100):');
+  const size = parseInt(gridSize);
+
+  if (!isNaN(size) && size > 0 && size <= 100) {
+    createGrid(size);
+  } else {
+    alert('Invalid input. Please enter a number between 1 and 100.');
+  }
+}
+
+document.addEventListener('DOMContentLoaded', createGrid(16));
+
+const button = document.createElement('button');
+button.textContent = 'Change Grid Size';
+button.addEventListener('click', askGridSize);
+document.body.insertBefore(button, document.getElementById('container'));
+
+function randomizeRGB() {
+  return Math.floor(Math.random() * 256);
+}
